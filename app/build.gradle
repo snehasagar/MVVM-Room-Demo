@@ -62,11 +62,7 @@ dependencies {
 
     def life_versions = "1.1.1"
 
-    /*// Room components
-    implementation "android.arch.persistence.room:runtime:$life_versions"
-    annotationProcessor "android.arch.persistence.room:compiler:$life_versions"
-    androidTestImplementation "android.arch.persistence.room:testing:$life_versions"
-*/
+
     // Lifecycle components
     implementation "android.arch.lifecycle:extensions:$life_versions"
     annotationProcessor "android.arch.lifecycle:compiler:$life_versions"

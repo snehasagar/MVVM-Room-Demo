@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -30,6 +31,7 @@ open class MapsActivity : FragmentActivity(), OnMapReadyCallback {
         setContentView(R.layout.activity_maps)
         lat = intent.getStringExtra("lat")
         lng = intent.getStringExtra("lng")
+        Log.d("LatLng", "--->" + lat + "--"+lng)
         fusedLocationProviderClient =  LocationServices.getFusedLocationProviderClient(this)
         fetchLocation()
 
@@ -50,6 +52,10 @@ open class MapsActivity : FragmentActivity(), OnMapReadyCallback {
                 currentLocation = it
                 Toast.makeText(applicationContext, currentLocation.latitude.toString() + "" +
                         currentLocation.longitude, Toast.LENGTH_SHORT).show()
+                val supportMapFragment = (supportFragmentManager.findFragmentById(R.id.map) as
+                        SupportMapFragment?)!!
+                supportMapFragment.getMapAsync(this)
+            }else{
                 val supportMapFragment = (supportFragmentManager.findFragmentById(R.id.map) as
                         SupportMapFragment?)!!
                 supportMapFragment.getMapAsync(this)
